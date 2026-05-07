@@ -2,7 +2,10 @@
   "name": "procurve-manager",
   "version": "1.0.0",
   "description": "Professional GUI for managing HP ProCurve switches",
-  "author": "syrex1013",
+  "author": {
+    "name": "syrex1013",
+    "email": "syrex1013@users.noreply.github.com"
+  },
   "license": "MIT",
   "main": "dist/main/index.js",
   "type": "module",
