@@ -1,0 +1,11 @@
+node_modules
+dist
+release
+*.log
+*.sqlite
+.env
+.DS_Store
+.vscode
+.idea
+package-lock.json
+procurve-manager.db

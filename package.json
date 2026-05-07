@@ -1,0 +1,82 @@
+{
+  "name": "procurve-manager",
+  "version": "1.0.0",
+  "description": "Professional GUI for managing HP ProCurve switches",
+  "author": "ProCurve Manager",
+  "license": "MIT",
+  "main": "dist/main/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:vite\" \"npm run dev:electron\"",
+    "dev:vite": "vite",
+    "dev:electron": "sleep 3 && electron .",
+    "build": "npm run build:vite && npm run build:main",
+    "build:vite": "vite build",
+    "build:main": "tsc --project tsconfig.json && tsc --project tsconfig.preload.json",
+    "type-check": "tsc --noEmit",
+    "preview": "vite preview",
+    "package": "npm run build && electron-builder",
+    "test": "vitest",
+    "test:ui": "vitest --ui"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/crypto-js": "^4.2.2",
+    "@types/node": "^25.6.1",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@types/ssh2": "^1.15.5",
+    "@vitejs/plugin-react": "^6.0.1",
+    "autoprefixer": "^10.5.0",
+    "concurrently": "^8.2.2",
+    "electron": "^42.0.0",
+    "electron-builder": "^26.8.1",
+    "postcss": "^8.5.14",
+    "tailwindcss": "^4.2.4",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.11",
+    "vitest": "^4.1.5"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.2.4",
+    "crypto-js": "^4.2.0",
+    "electron-is-dev": "^3.0.1",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "sql.js": "^1.14.1",
+    "ssh2": "^1.17.0"
+  },
+  "build": {
+    "appId": "com.procurve.manager",
+    "productName": "ProCurve Manager",
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.utilities"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Utility"
+    }
+  }
+}
