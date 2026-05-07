@@ -52,4 +52,6 @@ contextBridge.exposeInMainWorld('ipc', {
   removeSshConnectedListener: () => ipcRenderer.removeAllListeners('ssh:connected'),
   removeSshDisconnectedListener: () => ipcRenderer.removeAllListeners('ssh:disconnected'),
   removeSshErrorListener: () => ipcRenderer.removeAllListeners('ssh:error'),
+
+  platform: process.platform,
 });

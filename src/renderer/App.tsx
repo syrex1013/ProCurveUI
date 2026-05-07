@@ -50,6 +50,7 @@ declare global {
       removeSshConnectedListener: () => void;
       removeSshDisconnectedListener: () => void;
       removeSshErrorListener: () => void;
+      platform: string;
     };
   }
 }
@@ -77,10 +78,21 @@ export default function App() {
     await window.ipc?.sshDisconnect();
   };
 
+  const isMac = window.ipc?.platform === 'darwin';
+
   return (
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#1f2228', userSelect: 'none' }}>
       {/* Header */}
-      <div style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', padding: '0 24px 0 80px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: 52, flexShrink: 0, WebkitAppRegion: 'drag' as any }}>
+      <div style={{ 
+        borderBottom: '1px solid rgba(255,255,255,0.1)', 
+        padding: isMac ? '0 24px 0 80px' : '0 24px', 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center', 
+        height: 52, 
+        flexShrink: 0, 
+        WebkitAppRegion: isMac ? 'drag' : 'none' as any 
+      }}>
         <span style={{ fontFamily: 'Geist Mono, monospace', fontSize: '13px', fontWeight: 400, color: '#ffffff', textTransform: 'uppercase', letterSpacing: '2px' }}>
           ProCurve Manager
         </span>

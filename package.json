@@ -2,7 +2,7 @@
   "name": "procurve-manager",
   "version": "1.0.0",
   "description": "Professional GUI for managing HP ProCurve switches",
-  "author": "ProCurve Manager",
+  "author": "syrex1013",
   "license": "MIT",
   "main": "dist/main/index.js",
   "type": "module",
@@ -16,6 +16,9 @@
     "type-check": "tsc --noEmit",
     "preview": "vite preview",
     "package": "npm run build && electron-builder",
+    "package:mac": "npm run build && electron-builder --mac",
+    "package:win": "npm run build && electron-builder --win",
+    "package:linux": "npm run build && electron-builder --linux",
     "test": "vitest",
     "test:ui": "vitest --ui"
   },

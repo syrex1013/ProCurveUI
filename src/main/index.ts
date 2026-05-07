@@ -39,7 +39,8 @@ function createWindow() {
       contextIsolation: true,
       preload: preloadPath,
     },
-    titleBarStyle: 'hidden',
+    titleBarStyle: process.platform === 'darwin' ? 'hidden' : 'default',
+    frame: process.platform === 'darwin' ? false : true,
     backgroundColor: '#1f2228',
     icon: iconPath,
   });
